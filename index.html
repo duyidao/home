@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DaoDao Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              western: ['Rye', 'serif'],
+              typewriter: ['Courier Prime', 'monospace'],
+              paper: ['Special Elite', 'cursive'],
+            },
+            backgroundImage: {
+              'wood-pattern': "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
+              'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+            },
+            colors: {
+              wood: {
+                light: '#deb887',
+                DEFAULT: '#8b4513',
+                dark: '#5d2906',
+              },
+              paper: {
+                DEFAULT: '#fdfbf7',
+                old: '#f3e5ab',
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Custom Scrollbar for Western Feel */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f3e5ab; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #8b4513; 
+        border-radius: 6px;
+        border: 2px solid #f3e5ab;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.559.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
+    "clsx": "https://esm.sh/clsx@^2.1.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
