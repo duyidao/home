@@ -9,11 +9,11 @@ interface Todo {
 }
 
 const INITIAL_TODOS: Todo[] = [
-  { id: 1, text: "Refactor the Saloon API", completed: true },
-  { id: 2, text: "Fix the tumbleweed animation glitch", completed: false },
-  { id: 3, text: "Update wanted posters (documentation)", completed: false },
-  { id: 4, text: "Brew some strong coffee", completed: true },
-  { id: 5, text: "Deploy to the Wild West (Production)", completed: false },
+  { id: 1, text: "重新部署并完善刀刀音乐", completed: false },
+  { id: 2, text: "继续学习Vue3源码", completed: false },
+  { id: 3, text: "持续学习，保持刀刀博客的更新", completed: false },
+  { id: 4, text: "多多PR", completed: false },
+  { id: 5, text: "跟上技术发展步伐", completed: false },
 ];
 
 export const TodoList: React.FC = () => {
@@ -86,7 +86,7 @@ export const TodoList: React.FC = () => {
            {/* Footer Stamp */}
            <div className="mt-8 flex justify-end opacity-70 transform -rotate-12">
               <div className="border-4 border-red-800 text-red-800 rounded px-2 py-1 font-western text-xl uppercase tracking-widest mask-image-grunge">
-                Approved
+                已认证
               </div>
            </div>
         </div>

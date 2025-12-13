@@ -7,6 +7,7 @@ interface WantedCardProps {
   className?: string;
   hasSnow?: boolean;
   title?: string;
+  subTitle?: string;
 }
 
 const Screw: React.FC<{ className?: string }> = ({ className }) => (
@@ -15,7 +16,7 @@ const Screw: React.FC<{ className?: string }> = ({ className }) => (
   </div>
 );
 
-export const WantedCard: React.FC<WantedCardProps> = ({ children, className, hasSnow, title }) => {
+export const WantedCard: React.FC<WantedCardProps> = ({ children, className, hasSnow, title, subTitle }) => {
   return (
     <div className={clsx("relative p-6 bg-[#fdfbf7] shadow-2xl transition-all transform-gpu backface-hidden subpixel-antialiased", className)}>
       {/* Decorative Screws */}
@@ -37,7 +38,7 @@ export const WantedCard: React.FC<WantedCardProps> = ({ children, className, has
              <h2 className="text-4xl font-western uppercase tracking-widest text-stone-900 drop-shadow-sm">
               {title}
              </h2>
-             <span className="text-xs font-serif tracking-widest text-stone-600">REWARD FOR READING</span>
+             <span className="text-xs font-serif tracking-widest text-stone-600">{subTitle}</span>
           </div>
         )}
         {children}

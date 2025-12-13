@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Settings, Moon, Sun, ArrowUp, Map, BookOpen, X, ListTodo } from 'lucide-react';
+import { Settings, Moon, Sun, ArrowUp, BookOpen, X, ListTodo, Github } from 'lucide-react';
 
 interface NavigationUIProps {
   isDarkMode: boolean;
@@ -173,17 +173,17 @@ export const NavigationUI: React.FC<NavigationUIProps> = ({
                   </WoodenButton>
 
                   <WoodenButton onClick={() => { onScrollTo('module2'); setIsOpen(false); }}>
-                    <span>Record</span>
-                    <Map size={18} />
+                    <span>Github</span>
+                    <Github size={18} />
                   </WoodenButton>
 
                   <WoodenButton onClick={() => { onScrollTo('module3'); setIsOpen(false); }}>
-                    <span>Tales</span>
+                    <span>Project</span>
                     <BookOpen size={18} />
                   </WoodenButton>
 
                   <WoodenButton onClick={() => { onScrollTo('module4'); setIsOpen(false); }}>
-                    <span>Bounties</span>
+                    <span>Todo</span>
                     <ListTodo size={18} />
                   </WoodenButton>
                 </div>

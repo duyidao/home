@@ -60,6 +60,23 @@ const App: React.FC = () => {
   const section2Scale = useTransform(section2Progress, [0.6, 0.9], [1, 0.9]);
   const section2Y = useTransform(section2Progress, [0.6, 0.9], [0, 50]);
 
+  const projectList = [
+    {
+      title: '刀刀博客',
+      subTitle: 'Daodao Blog',
+      description: '刀刀前端学习博客，记录着学习的知识积累',
+      tags: ['Blog', 'Learn', 'Vitepress', 'Vue'],
+      url: 'https://blog.duyidao.cn/',
+    },
+    {
+      title: '刀刀音乐',
+      subTitle: 'Daodao Music',
+      description: '刀刀音乐项目，一个基于 Vue3 + TypeScript 的音乐播放器',
+      tags: ['Music', 'TypeScript', 'Vue'],
+      url: 'https://music.duyidao.cn/',
+    },
+  ]
+
   // Updated Tag Renderer
   const renderTags = (tags: string[]) => (
     <div className="mt-4 flex flex-wrap gap-3">
@@ -167,11 +184,11 @@ const App: React.FC = () => {
         style={{ scale: heroScale, opacity: heroOpacity, y: heroY }}
         className="relative h-screen w-full flex items-center justify-center p-4 z-10"
       >
-        <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-screen-2xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           
           {/* Left: Text Info */}
           <div className="text-center md:text-left order-2 md:order-1 flex flex-col items-center md:items-start">
-            <h1 className="text-6xl md:text-8xl font-western mb-6 relative select-none tracking-wide">
+            <h1 className="text-6xl md:text-1200 font-western mb-6 relative select-none tracking-wide">
               <span className={`bg-clip-text text-transparent bg-gradient-to-b ${isDarkMode ? 'from-[#a67c52] to-[#d4b996]' : 'from-[#5d2906] to-[#8b4513]'} drop-shadow-[2px_2px_0px_rgba(255,255,255,0.4)] filter transition-colors duration-700`}>
                 刀刀小站
               </span>
@@ -228,7 +245,7 @@ const App: React.FC = () => {
       >
         <motion.div 
           style={{ opacity: section2Opacity, scale: section2Scale, y: section2Y }}
-          className="w-full max-w-7xl px-4"
+          className="w-full max-w-screen-2xl px-4"
         >
           <div className="mb-10 text-center relative">
              <h2 className={`text-5xl font-western ${isDarkMode ? 'text-[#e6d5b8]' : 'text-[#5d2906]'} drop-shadow-[0_2px_0_rgba(255,223,186,0.8)] tracking-widest transition-colors duration-700`}>
@@ -242,7 +259,7 @@ const App: React.FC = () => {
       </section>
 
 
-      {/* --- MODULE 3: TALES FROM THE TRAIL --- */}
+      {/* --- MODULE 3: MY PROJECT WORK --- */}
       <section 
         ref={section3Ref}
         className="relative min-h-screen w-full flex flex-col items-center justify-center p-4 md:p-12 z-10 pb-32"
@@ -253,74 +270,21 @@ const App: React.FC = () => {
           viewport={{ once: true }}
           className="text-5xl font-western text-slate-800 bg-white/60 px-8 py-4 rounded-lg shadow-xl border-4 border-slate-400 rotate-1 mb-16 backdrop-blur-sm"
         >
-          Tales from the Trail
+          My Project Work
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl w-full">
-           {/* Original 4 Cards */}
-           <WantedCard title="React Patterns" className="-rotate-1 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Ideally, hooks should be like a quick draw—fast, effective, and clean. Yesterday I wrestled with a `useEffect` loop...</p>
-                {renderTags(['React', 'Hooks'])}
-              </div>
-           </WantedCard>
-
-           <WantedCard title="CSS Grid Layouts" className="rotate-2 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Building layouts used to be like building a railroad through the Rockies. With Grid and Flexbox, it's smooth sailing...</p>
-                {renderTags(['CSS', 'Grid', 'Layout'])}
-              </div>
-           </WantedCard>
-
-           <WantedCard title="TypeScript Sheriff" className="-rotate-2 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Type safety is the law in this town. Use `any` and you might find yourself in the county jail. Generics are your deputy.</p>
-                {renderTags(['TS', 'Safety'])}
-              </div>
-           </WantedCard>
-
-           <WantedCard title="Node.js Express" className="rotate-1 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Routing the train tracks correctly is vital. Middleware is like the checkpoints along the way.</p>
-                {renderTags(['Node.js', 'Express', 'Backend'])}
-              </div>
-           </WantedCard>
-
-           {/* 5 New Cards for Testing Grid Layout */}
-           <WantedCard title="State Management" className="rotate-1 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Rounding up stray state with Redux or keeping it local with Context? Choose your lasso wisely, partner.</p>
-                {renderTags(['Redux', 'Zustand'])}
-              </div>
-           </WantedCard>
-
-           <WantedCard title="Next.js Frontier" className="-rotate-2 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Server Side Rendering is the new gold rush. Static generation is steady, but SSR is where the action is.</p>
-                {renderTags(['Next.js', 'SSR'])}
-              </div>
-           </WantedCard>
-
-           <WantedCard title="Tailwind Saloon" className="rotate-2 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Utility classes are like a good drink - quick, potent, and gets the job done without the fuss.</p>
-                {renderTags(['Tailwind', 'CSS'])}
-              </div>
-           </WantedCard>
-
-           <WantedCard title="Performance" className="-rotate-1 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Don't let your app drag like a lame horse. Optimize images, lazy load components, and keep the bundle small.</p>
-                {renderTags(['Perf', 'Lighthouse'])}
-              </div>
-           </WantedCard>
-
-           <WantedCard title="Testing Sheriff" className="rotate-1 hover:rotate-0 hover:scale-[1.02] duration-300 transform-gpu will-change-transform" hasSnow={true}>
-              <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
-                <p>Jest and Cypress are the deputies that keep the bugs out of town before sundown.</p>
-                {renderTags(['Jest', 'Cypress'])}
-              </div>
-           </WantedCard>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl w-full">
+          {/* Original 4 Cards */}
+          {
+            projectList.map((project, idx) => (
+              <WantedCard key={idx} title={project.title} subTitle={project.subTitle} className={`hover:rotate-0 hover:scale-[1.02] duration-300transform-gpu will-change-transform cursor-pointer ${idx % 2 === 0 ? 'rotate-1' : '-rotate-1'}`} hasSnow={true} onClick={() => window.open(project.url, '_blank')}>
+                <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
+                  <p>{project.description}</p>
+                  {renderTags(project.tags)}
+                </div>
+              </WantedCard>
+            ))
+          }
         </div>
       </section>
 
@@ -331,7 +295,7 @@ const App: React.FC = () => {
       >
         {/* Module specific ambient effects: None requested */}
 
-        <div className="relative z-10 w-full max-w-7xl flex flex-col items-center mb-24">
+        <div className="relative z-10 w-full max-w-screen-2xl flex flex-col items-center mb-24">
           <motion.div
              initial={{ opacity: 0, y: 50 }}
              whileInView={{ opacity: 1, y: 0 }}

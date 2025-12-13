@@ -2,13 +2,21 @@ import React from 'react';
 
 interface GithubCalendarProps {
   year?: string;
-  total?: number;
+  weeks?: Array<any>;
 }
 
-export const GithubCalendar: React.FC<GithubCalendarProps> = ({ year, total }) => {
-  // Generate mock contribution data (52 weeks x 7 days)
-  const weeks = 52;
-  const days = 7;
+export const GithubCalendar: React.FC<GithubCalendarProps> = ({ year, weeks }) => {
+  let commitTotal = 0
+  // 格式化提交的数据格式
+  const weeksData = weeks?.flatMap((week: any) =>
+    week.contributionDays.map((day: any) => {
+      commitTotal += day.contributionCount
+      return {
+        date: day.date,
+        count: day.contributionCount,
+      }
+    })
+  ) || []
   
   // Western color palette for contributions (Paper/Leather style)
   const getContributionColor = (level: number) => {
@@ -24,16 +32,17 @@ export const GithubCalendar: React.FC<GithubCalendarProps> = ({ year, total }) =
 
   const generateGrid = () => {
     const grid = [];
-    for (let w = 0; w < weeks; w++) {
+    for (let w = 0; w < weeksData.length; w+=7) {
       const weekCol = [];
+      // 计算是否足够一星期7天
+      let days = weeksData.length > w + 7 ? 7 : weeksData.length - w;
       for (let d = 0; d < days; d++) {
         // Randomize mock data
-        const level = Math.random() > 0.7 ? Math.floor(Math.random() * 5) : 0;
         weekCol.push(
           <div 
-            key={`${w}-${d}`} 
-            className={`w-2.5 h-2.5 rounded-[1px] ${getContributionColor(level)} hover:scale-125 transition-transform duration-200 cursor-pointer`}
-            title={`${level} commits`}
+            key={`${w}-${d}`}
+            className={`w-2.5 h-2.5 rounded-[1px] ${getContributionColor(weeksData[w+d].count)} hover:scale-125 transition-transform duration-200 cursor-pointer`}
+            title={`date ${weeksData[w+d].date} : ${weeksData[w+d].count} commits`}
           />
         );
       }
@@ -46,7 +55,7 @@ export const GithubCalendar: React.FC<GithubCalendarProps> = ({ year, total }) =
     <div className="w-full">
       <div className="flex justify-between items-end mb-2 px-1">
          <span className="font-western text-sm text-stone-600">{year}</span>
-         <span className="font-typewriter text-xs text-stone-500">{total} Contributions</span>
+         <span className="font-typewriter text-xs text-stone-500">{commitTotal} Contributions</span>
       </div>
       <div className="w-full overflow-x-auto p-2 bg-paper/50 rounded border border-stone-300/50">
         <div className="flex gap-[2px] min-w-max">

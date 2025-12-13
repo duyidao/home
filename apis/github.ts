@@ -50,7 +50,7 @@ export const fetchGithubUser = async (username: string = 'duyidao') => {
 
 // 获取 GitHub 用户数据
 export const fetchAggregateGithubUserData = async (
-  username: string
+  username: string = 'duyidao'
 ): Promise<IGraphql> => {
   const query = `
     query ($login: String!) {
@@ -76,7 +76,7 @@ export const fetchAggregateGithubUserData = async (
 
 // 获取 Github 用户的统计趋势
 export const fetchGithubUserStatisticsTrend = async (
-  username: string
+  username: string = 'duyidao'
 ): Promise<IUserStatisticsTrend> => {
   const query = `
     query ($login: String!) {
