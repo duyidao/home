@@ -8,6 +8,7 @@ interface WantedCardProps {
   hasSnow?: boolean;
   title?: string;
   subTitle?: string;
+  url?: string;
 }
 
 const Screw: React.FC<{ className?: string }> = ({ className }) => (
@@ -16,9 +17,9 @@ const Screw: React.FC<{ className?: string }> = ({ className }) => (
   </div>
 );
 
-export const WantedCard: React.FC<WantedCardProps> = ({ children, className, hasSnow, title, subTitle }) => {
+export const WantedCard: React.FC<WantedCardProps> = ({ children, className, hasSnow = true, title, subTitle, url }) => {
   return (
-    <div className={clsx("relative p-6 bg-[#fdfbf7] shadow-2xl transition-all transform-gpu backface-hidden subpixel-antialiased", className)}>
+    <div className={clsx("relative p-6 bg-[#fdfbf7] shadow-2xl transition-all transform-gpu backface-hidden subpixel-antialiased", className)} onClick={() => window.open(url, '_blank')}>
       {/* Decorative Screws */}
       <Screw className="absolute top-3 left-3 transform -rotate-12" />
       <Screw className="absolute top-3 right-3 transform rotate-45" />

@@ -12,7 +12,7 @@ const INITIAL_TODOS: Todo[] = [
   { id: 1, text: "重新部署并完善刀刀音乐", completed: false },
   { id: 2, text: "继续学习Vue3源码", completed: false },
   { id: 3, text: "持续学习，保持刀刀博客的更新", completed: false },
-  { id: 4, text: "多多PR", completed: false },
+  { id: 4, text: "多多寻找可提交的PR", completed: false },
   { id: 5, text: "跟上技术发展步伐", completed: false },
 ];
 
@@ -47,9 +47,9 @@ export const TodoList: React.FC = () => {
            {/* "TODO LIST" Header */}
            <div className="text-center mb-8 border-b-2 border-stone-800 pb-2 border-double">
              <h2 className="text-4xl font-western tracking-[0.2em] text-[#5d2906] drop-shadow-sm uppercase">
-               Bounty List
+               Todo List
              </h2>
-             <span className="font-typewriter text-xs text-stone-500 tracking-widest">DEAD OR ALIVE (BUGS)</span>
+             <span className="font-typewriter text-xs text-stone-500 tracking-widest">Future plans (Front-end)</span>
            </div>
 
            {/* List Items */}
@@ -69,7 +69,7 @@ export const TodoList: React.FC = () => {
                  </div>
                  
                  {/* Text with strike-through animation */}
-                 <span className={`relative transition-all duration-300 ${todo.completed ? 'text-stone-400' : 'text-stone-800'}`}>
+                 <span className={`relative transition-all duration-300 translate-y-0.5 ${todo.completed ? 'text-stone-400' : 'text-stone-800'}`}>
                    {todo.text}
                    {todo.completed && (
                      <motion.div 

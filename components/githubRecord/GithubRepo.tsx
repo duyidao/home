@@ -14,11 +14,11 @@ interface GithubRepoProps {
 
 export const GithubRepo: React.FC<GithubRepoProps> = ({ list }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[440px] overflow-y-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[440px] overflow-y-scroll">
       {list.map((repo: GithubRepoState, idx: number) => (
         <div
           key={idx}
-          className="p-3 border border-stone-300 rounded bg-paper-old/20 cursor-pointer transform-gpu [backface-visibility:hidden] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-wood hover:bg-[#fff9e6] group"
+          className="p-3 border border-stone-300 rounded bg-paper-old/20 cursor-pointer transform-gpu [backface-visibility:hidden] transition-all duration-300 hover:shadow-lg hover:border-wood hover:bg-[#fff9e6] group"
           onClick={() => window.open(repo.url, '_blank')} // Open in new tab or window
         >
           <div className="flex justify-between items-start mb-2">

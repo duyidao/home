@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, ExternalLink, Youtube, Code2, Plus } from 'lucide-react';
+import { Github, Youtube, Code2 } from 'lucide-react';
 import { Typewriter } from './components/Typewriter';
 import { WantedCard } from './components/WantedCard';
 import { CowboyDashboard } from './components/CowboyDashboard';
 import { DustEffect } from './components/DustEffect';
 import { LeafEffect } from './components/LeafEffect';
 import { NavigationUI } from './components/NavigationUI';
-import { TodoList } from './components/TodoList';
+import { TodoList } from './components/todoRecord/TodoList';
+import { Wanted } from './components/todoRecord/Wanted';
 import { FallingSnow } from './components/FallingSnow';
 
 const App: React.FC = () => {
@@ -197,11 +198,14 @@ const App: React.FC = () => {
             <div className="flex items-center justify-center h-16 md:h-12 mb-8 md:justify-start w-full">
               <Typewriter 
                 texts={[
-                  "Oasis in the Code Desert",
-                  "Full Stack Gunslinger",
-                  "React & Node.js Outlaw",
-                  "Wanted: Clean Code"
-                ]} 
+                  '今天不想做，所以才要做',
+                  '游龙当归海，海不迎我自来也',
+                  '看惯黑夜的人，不应该习惯黑夜，而是应该期待黑夜中的光明',
+                  '她爱海只爱海的惊涛骇浪，爱青草仅仅爱青草遍生于废墟之间',
+                  '慢也好，步伐小也罢，是往前走就好',
+                  '生命如同寓言，其价值不在于长短，而在于内容',
+                  '居高声自远，非是藉秋风'
+                ]}
                 className={`text-xl md:text-2xl font-typewriter ${isDarkMode ? 'text-[#d4b996]' : 'text-[#422006]'} font-bold tracking-tight transition-colors duration-700`}
                 typingSpeed={120}
               />
@@ -277,7 +281,13 @@ const App: React.FC = () => {
           {/* Original 4 Cards */}
           {
             projectList.map((project, idx) => (
-              <WantedCard key={idx} title={project.title} subTitle={project.subTitle} className={`hover:rotate-0 hover:scale-[1.02] duration-300transform-gpu will-change-transform cursor-pointer ${idx % 2 === 0 ? 'rotate-1' : '-rotate-1'}`} hasSnow={true} onClick={() => window.open(project.url, '_blank')}>
+              <WantedCard
+                key={idx}
+                title={project.title}
+                subTitle={project.subTitle}
+                url={project.url}
+                className={`hover:rotate-0 hover:scale-[1.02] duration-300transform-gpu will-change-transform cursor-pointer ${idx % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}
+              >
                 <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
                   <p>{project.description}</p>
                   {renderTags(project.tags)}
@@ -309,31 +319,7 @@ const App: React.FC = () => {
              </div>
 
              {/* Right Column: Additional Bounty Board or Stats */}
-             <div className="flex justify-center">
-                <div className="relative w-full max-w-2xl mx-auto">
-                    <div className="relative bg-[#5d2906] p-4 rounded-lg shadow-2xl border-4 border-[#3e1b04] h-full">
-                       <div className="absolute inset-0 bg-wood-pattern opacity-50 pointer-events-none mix-blend-overlay"></div>
-                       {/* Nails */}
-                       <div className="absolute top-2 left-2 w-3 h-3 rounded-full bg-[#1a0f00]"></div>
-                       <div className="absolute top-2 right-2 w-3 h-3 rounded-full bg-[#1a0f00]"></div>
-                       
-                       {/* Paper */}
-                       <div className="relative bg-[#fdfbf7] mx-1 my-1 p-8 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] border border-[#d7c4a1] transform -rotate-[0.5deg] h-[97%] flex flex-col items-center justify-center">
-                          <div className="absolute inset-0 bg-paper-texture opacity-40 pointer-events-none"></div>
-                          <h2 className="text-3xl font-western uppercase text-[#5d2906] mb-4 text-center">Most Wanted</h2>
-                          <div className="w-32 h-32 border-4 border-stone-800 mb-4 bg-stone-200 flex items-center justify-center shadow-inner">
-                             <span className="font-western text-6xl text-stone-400 opacity-50">?</span>
-                          </div>
-                          <p className="font-typewriter text-stone-700 text-center mb-6">Unknown Bug <br/> Reward: 500 Stars</p>
-                          <div className="w-full border-t border-stone-400 pt-4 text-center">
-                             <button className="flex items-center gap-2 mx-auto px-4 py-2 border-2 border-stone-800 rounded hover:bg-stone-200 transition-colors font-western text-stone-900">
-                                <Plus size={16}/> Report Sighting
-                             </button>
-                          </div>
-                       </div>
-                    </div>
-                </div>
-             </div>
+             <Wanted />
           </motion.div>
         </div>
       </section>
