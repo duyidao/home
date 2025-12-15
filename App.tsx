@@ -4,12 +4,12 @@ import { Github, Youtube, Code2 } from 'lucide-react';
 import { Typewriter } from './components/Typewriter';
 import { WantedCard } from './components/WantedCard';
 import { CowboyDashboard } from './components/CowboyDashboard';
-import { DustEffect } from './components/DustEffect';
-import { LeafEffect } from './components/LeafEffect';
+import { DustEffect } from './components/backgroundAnimate/DustEffect';
+import { LeafEffect } from './components/backgroundAnimate/LeafEffect';
+import { FallingSnow } from './components/backgroundAnimate/FallingSnow';
 import { NavigationUI } from './components/NavigationUI';
 import { TodoList } from './components/todoRecord/TodoList';
 import { Wanted } from './components/todoRecord/Wanted';
-import { FallingSnow } from './components/FallingSnow';
 
 const App: React.FC = () => {
   // Navigation & State
@@ -206,7 +206,7 @@ const App: React.FC = () => {
                   '生命如同寓言，其价值不在于长短，而在于内容',
                   '居高声自远，非是藉秋风'
                 ]}
-                className={`text-xl md:text-2xl font-typewriter ${isDarkMode ? 'text-[#d4b996]' : 'text-[#422006]'} font-bold tracking-tight transition-colors duration-700`}
+                className={`text-xl md:text-2xl font-typewriter ${isDarkMode ? 'text-[#d4b996] border-[#ededed]' : 'text-[#422006] border-black'} font-bold tracking-tight transition-colors duration-700`}
                 typingSpeed={120}
               />
             </div>
@@ -258,7 +258,7 @@ const App: React.FC = () => {
              <div className="w-32 h-2 bg-[#5d2906] mx-auto mt-2 rounded-full opacity-80"></div>
           </div>
 
-          <CowboyDashboard />
+          <CowboyDashboard isDarkMode={isDarkMode} />
         </motion.div>
       </section>
 

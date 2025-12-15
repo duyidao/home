@@ -7,7 +7,7 @@ interface GithubCommitProps {
 
 export const GithubCommit: React.FC<GithubCommitProps> = ({ list }) => {
   return (
-    <div className="flex-grow overflow-y-auto pr-1 space-y-4 max-h-[800px] scrollbar-thin">
+    <div className="flex-grow overflow-y-auto pr-1 space-y-4 max-h-[863px] scrollbar-thin">
       {list.map((commit, idx) => (
         <div
           key={idx}

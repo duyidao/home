@@ -45,7 +45,7 @@ const RibbonTitle: FC<{ children: ReactNode }> = ({ children }) => (
   </div>
 );
 
-export const CowboyDashboard: FC = () => {
+export const CowboyDashboard: FC<{ isDarkMode: boolean }> = ({ isDarkMode }) => {
   const [githubUser, setGithubUser] = useState({});
   const [aggregateGithubUserData, setAggregateGithubUserData] = useState({
     user: {},
@@ -188,7 +188,7 @@ export const CowboyDashboard: FC = () => {
       {/* Left Column: Profile & Stats (Span 3) */}
       <div className="lg:col-span-3 flex flex-col gap-6">
         {/* Profile Card */}
-        <div className="bg-[#fdfbf7] p-4 rounded shadow-xl border-2 border-[#d7c4a1] relative overflow-hidden group">
+        <div className={`p-4 rounded shadow-xl border-2 ${isDarkMode ? 'bg-[#ededed]' : 'bg-[#fdfbf7]'} border-[#d7c4a1] relative overflow-hidden group`}>
           <div className="absolute top-0 left-0 w-full h-1 bg-wood"></div>
           <div className="flex flex-col items-center">
             <div className="w-24 h-24 rounded-full border-4 border-wood-light overflow-hidden mb-3 shadow-inner">
@@ -243,7 +243,7 @@ export const CowboyDashboard: FC = () => {
         </div>
 
         {/* Languages */}
-        <div className="bg-[#fdfbf7] p-4 rounded shadow-xl border border-[#d7c4a1] relative">
+        <div className={`${isDarkMode ? 'bg-[#ededed]' : 'bg-[#fdfbf7]'} p-4 rounded shadow-xl border border-[#d7c4a1] relative`}>
           <RibbonTitle>常用语言</RibbonTitle>
           <div className="flex h-3 w-full rounded-full overflow-hidden bg-stone-200 mb-4 border border-stone-300">
             {languagesPercentage?.map((lang) => (
@@ -257,14 +257,14 @@ export const CowboyDashboard: FC = () => {
               ></div>
             ))}
           </div>
-          <div className="grid grid-cols-2 gap-y-2">
+          <div className="grid grid-cols-2 md:grid-cols-1 gap-y-2">
             {languagesPercentage?.map((lang) => (
               <div
                 key={lang.name}
                 className="flex items-center gap-2 text-xs font-typewriter text-stone-700"
               >
                 <div
-                  className="w-2 h-2 rounded-full"
+                  className="min-w-2 h-2 rounded-full"
                   style={{ backgroundColor: lang.color }}
                 ></div>
                 <span className="font-bold">{lang.name}</span>
@@ -278,7 +278,7 @@ export const CowboyDashboard: FC = () => {
       {/* Middle Column: Activity & Repos (Span 6) */}
       <div className="lg:col-span-5 flex flex-col gap-6">
         {/* Activity */}
-        <div className="bg-[#fdfbf7] p-4 rounded shadow-xl border border-[#d7c4a1]">
+        <div className={`${isDarkMode ? 'bg-[#ededed]' : 'bg-[#fdfbf7]'} p-4 rounded shadow-xl border border-[#d7c4a1]`}>
           <RibbonTitle>活跃度</RibbonTitle>
           <div className="flex flex-col gap-4">
             {[0, 1].map((i) => (
@@ -296,7 +296,7 @@ export const CowboyDashboard: FC = () => {
         </div>
 
         {/* Repos */}
-        <div className="bg-[#fdfbf7] p-4 rounded shadow-xl border border-[#d7c4a1] flex-grow">
+        <div className={`${isDarkMode ? 'bg-[#ededed]' : 'bg-[#fdfbf7]'} p-4 rounded shadow-xl border border-[#d7c4a1] flex-grow`}>
           <RibbonTitle>项目仓库</RibbonTitle>
           <GithubRepo
             list={aggregateGithubUserData.user?.repositories?.nodes || []}
@@ -306,7 +306,7 @@ export const CowboyDashboard: FC = () => {
 
       {/* Right Column: Commits (Span 3) */}
       <div className="lg:col-span-4 flex flex-col gap-6">
-        <div className="bg-[#fdfbf7] p-4 rounded shadow-xl border border-[#d7c4a1] h-full relative">
+        <div className={`${isDarkMode ? 'bg-[#ededed]' : 'bg-[#fdfbf7]'} p-4 rounded shadow-xl border border-[#d7c4a1] h-full relative`}>
           {/* Decorative paper holes */}
           <div className="absolute left-2 top-0 bottom-0 flex flex-col justify-around py-4">
             {[...Array(10)].map((_, i) => (

@@ -43,7 +43,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({
   }, [displayText, isDeleting, currentIndex, texts, typingSpeed, deletingSpeed, pauseDuration]);
 
   return (
-    <span className={`${className} font-typewriter border-r-2 border-black animate-pulse pr-1`}>
+    <span className={`${className} font-typewriter border-r-2  animate-pulse pr-1`}>
       {displayText}
     </span>
   );
