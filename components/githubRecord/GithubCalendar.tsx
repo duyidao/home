@@ -21,12 +21,20 @@ export const GithubCalendar: React.FC<GithubCalendarProps> = ({ year, weeks }) =
   // Western color palette for contributions (Paper/Leather style)
   const getContributionColor = (level: number) => {
     switch(level) {
-      case 0: return 'bg-[#e8dec5]/50'; // Empty/Paper
-      case 1: return 'bg-[#d4b996]'; // Light Leather
-      case 2: return 'bg-[#a67c52]'; // Leather
-      case 3: return 'bg-[#8b4513]'; // Saddle Brown
-      case 4: return 'bg-[#5d2906]'; // Dark Chocolate
-      default: return 'bg-[#e8dec5]';
+      case 0: return 'bg-[#e8dec5]/50';
+      case 1:
+      case 2:
+        return 'bg-[#e8dec5]';
+      case 3:
+      case 4:
+        return 'bg-[#d4b996]';
+      case 5:
+      case 6:
+        return 'bg-[#a67c52]';
+      case 7:
+      case 8:
+        return 'bg-[#8b4513]';
+      default: return 'bg-[#5d2906]';
     }
   };
 

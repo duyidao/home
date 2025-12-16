@@ -5,6 +5,7 @@ import {
   useEffect,
   useMemo,
   useCallback,
+  useRef,
 } from "react";
 import { User, Star, GitCommit, GitPullRequest, CircleDot } from "lucide-react";
 import { GithubCalendar } from "./githubRecord/GithubCalendar";
@@ -183,6 +184,30 @@ export const CowboyDashboard: FC<{ isDarkMode: boolean }> = ({ isDarkMode }) => 
     githubUserStatisticsTrend?.pullRequestsTrend?.nodes,
   ]);
 
+  // 计算活跃度的高度
+  const [height, setHeight] = useState(0);
+  const activityRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // 创建 ResizeObserver 来监听尺寸变化
+    const observer = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        const { height } = entry.contentRect;
+        console.log(height);
+        
+        setHeight(height);
+      }
+    });
+
+    if (activityRef.current) {
+      observer.observe(activityRef.current);
+    }
+
+    // 清理函数
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="w-full max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 p-2">
       {/* Left Column: Profile & Stats (Span 3) */}
@@ -278,7 +303,7 @@ export const CowboyDashboard: FC<{ isDarkMode: boolean }> = ({ isDarkMode }) => 
       {/* Middle Column: Activity & Repos (Span 6) */}
       <div className="lg:col-span-5 flex flex-col gap-6">
         {/* Activity */}
-        <div className={`${isDarkMode ? 'bg-[#ededed]' : 'bg-[#fdfbf7]'} p-4 rounded shadow-xl border border-[#d7c4a1]`}>
+        <div ref={activityRef} className={`${isDarkMode ? 'bg-[#ededed]' : 'bg-[#fdfbf7]'} p-4 rounded shadow-xl border border-[#d7c4a1]`}>
           <RibbonTitle>活跃度</RibbonTitle>
           <div className="flex flex-col gap-4">
             {[0, 1].map((i) => (
@@ -300,6 +325,7 @@ export const CowboyDashboard: FC<{ isDarkMode: boolean }> = ({ isDarkMode }) => 
           <RibbonTitle>项目仓库</RibbonTitle>
           <GithubRepo
             list={aggregateGithubUserData.user?.repositories?.nodes || []}
+            height={height}
           ></GithubRepo>
         </div>
       </div>
