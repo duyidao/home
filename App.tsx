@@ -288,7 +288,7 @@ const App: React.FC = () => {
                 url={project.url}
                 className={`hover:rotate-0 hover:scale-[1.02] duration-300transform-gpu will-change-transform cursor-pointer ${idx % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}
               >
-                <div className="font-paper text-justify leading-relaxed text-sm flex flex-col h-full justify-between">
+                <div className="font-paper text-justify leading-relaxed text-lg flex flex-col h-full justify-between">
                   <p>{project.description}</p>
                   {renderTags(project.tags)}
                 </div>
