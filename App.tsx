@@ -65,14 +65,28 @@ const App: React.FC = () => {
     {
       title: '刀刀博客',
       subTitle: 'Daodao Blog',
-      description: '刀刀前端学习博客，记录着学习的知识积累',
+      description: '刀刀前端学习博客，记录着学习的知识积累。包括 Vue、React、Node 等概念知识，也包含 远方os、渡一、黑马 等业务功能',
       tags: ['Blog', 'Learn', 'Vitepress', 'Vue'],
       url: 'https://blog.duyidao.cn/',
     },
     {
+      title: '刀刀博客实践器',
+      subTitle: 'Daodao Example',
+      description: '刀刀博客知识实践，好记性不如烂笔头，纸上谈兵不如动手实践。包含刀刀博客学习的代码实践。后续拓展代码可视化功能',
+      tags: ['Example', 'Vue', 'JS', 'Package'],
+      url: 'https://example.duyidao.cn/',
+    },
+    {
+      title: '刀刀知识流程动画',
+      subTitle: 'Daodao Run',
+      description: '刀刀知识动画流程项目，把部分知识代码、运行流程等以动画的形式展示出来，方便理解记忆。持续更新中',
+      tags: ['Run', 'Step', 'SVG', 'Animate'],
+      url: 'https://run.duyidao.cn/',
+    },
+    {
       title: '刀刀音乐',
       subTitle: 'Daodao Music',
-      description: '刀刀音乐项目，一个基于 Vue3 + TypeScript 的音乐播放器',
+      description: '刀刀音乐项目，一个基于 Vue3 + TypeScript 的音乐播放器。正在重构中......后续支持流式播放、下载等需求',
       tags: ['Music', 'TypeScript', 'Vue'],
       url: 'https://music.duyidao.cn/',
     },
@@ -199,12 +213,13 @@ const App: React.FC = () => {
               <Typewriter 
                 texts={[
                   '今天不想做，所以才要做',
-                  '游龙当归海，海不迎我自来也',
+                  '背朝太阳，就只能看到自己的影子',
                   '看惯黑夜的人，不应该习惯黑夜，而是应该期待黑夜中的光明',
-                  '她爱海只爱海的惊涛骇浪，爱青草仅仅爱青草遍生于废墟之间',
                   '慢也好，步伐小也罢，是往前走就好',
                   '生命如同寓言，其价值不在于长短，而在于内容',
-                  '居高声自远，非是藉秋风'
+                  '居高声自远，非是藉秋风',
+                  '荒诞也好，愚笨也好，总会过去的',
+                  '愿作一缕白昼的月光，不求眩目的荣华，不淆世俗的浪潮'
                 ]}
                 className={`text-xl md:text-2xl font-typewriter ${isDarkMode ? 'text-[#d4b996] border-[#ededed]' : 'text-[#422006] border-black'} font-bold tracking-tight transition-colors duration-700`}
                 typingSpeed={120}
